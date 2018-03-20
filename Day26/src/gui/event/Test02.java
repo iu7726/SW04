@@ -3,10 +3,12 @@ package gui.event;
 import java.awt.BorderLayout;
 import java.awt.Button;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Frame;
 import java.awt.GridLayout;
 import java.awt.Label;
 import java.awt.Panel;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -20,54 +22,13 @@ class Window02 extends Frame{
 	private BorderLayout border = new BorderLayout();
 	private GridLayout grid = new GridLayout(1, 2);
 	
+	private Font font = new Font("",Font.PLAIN,30);
+	
+	
 	private Panel p = new Panel();
 	
-	private MouseListener listener = new MouseListener() {
-		
-		@Override
-		public void mouseReleased(MouseEvent arg0) {
-			// TODO Auto-generated method stub
-			
-		}
-		
-		@Override
-		public void mousePressed(MouseEvent arg0) {
-			// TODO Auto-generated method stub
-			
-		}
-		
-		@Override
-		public void mouseExited(MouseEvent event) {
-			// TODO Auto-generated method stub
-			yes.setBackground(Color.white);
-			if(event.getSource().equals(yes)) {
-				yes.setBackground(Color.white);
-			}else {
-				no.setBackground(Color.white);
-			}
-		}
-		
-		@Override
-		public void mouseEntered(MouseEvent event) {
-			// TODO Auto-generated method stub
-			
-			if(event.getSource().equals(yes)) {
-				yes.setBackground(Color.YELLOW);
-			}else {
-				no.setBackground(Color.YELLOW);
-			}
-		}
-		
-		@Override
-		public void mouseClicked(MouseEvent e) {
-			// TODO Auto-generated method stub
-			if(e.getClickCount() == 1) {
-				yes.setVisible(false);
-				no.setVisible(false);
-				label.setText("처리가 완료되었습니다.");
-			}
-		}
-	};
+	
+
 	
 	public Window02() {
 		this.display();
@@ -88,6 +49,42 @@ class Window02 extends Frame{
 
 	private void event() {
 		// TODO Auto-generated method stub
+		//*Listener의 경우 인터페이스라 무조건 재정의를 해야 하므로 코드 낭비가 발생
+		//-> 메소드가 2개 이상인 Listener는 반드시 이를 상속한 클래스가 존재(Adapter)
+		MouseListener listener = new MouseAdapter() {
+			
+			@Override
+			public void mouseExited(MouseEvent event) {
+				// TODO Auto-generated method stub
+				yes.setBackground(Color.white);
+				if(event.getSource().equals(yes)) {
+					yes.setBackground(null);
+				}else {
+					no.setBackground(null);
+				}
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent event) {
+				// TODO Auto-generated method stub
+				
+				if(event.getSource().equals(yes)) {
+					yes.setBackground(Color.YELLOW);
+				}else {
+					no.setBackground(Color.YELLOW);
+				}
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				if(e.getClickCount() == 1) {
+					yes.setEnabled(false);
+					no.setEnabled(false);
+					label.setText("처리가 완료되었습니다.");
+				}
+			}
+		};
 		yes.addMouseListener(listener);
 		no.addMouseListener(listener);
 	}
@@ -95,12 +92,14 @@ class Window02 extends Frame{
 	private void display() {
 		// TODO Auto-generated method stub
 		
-		setLayout(border);
-		add(label,BorderLayout.CENTER);
-		add(p,BorderLayout.SOUTH);
+		setLayout(new GridLayout(2, 1));
+		add(label);
+		add(p);
 		p.setLayout(grid);
 		p.add(yes);
 		p.add(no);
+		yes.setFont(font);
+		no.setFont(font);
 		
 	}
 	
