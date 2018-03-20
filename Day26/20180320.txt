@@ -1,0 +1,16 @@
+[이벤트[
+- 컴포넌트와 실행코드를 연결시키는 것
+- 이벤트의 종류와 그에 따른 처리 클래스를 알아야 한다(암기)
+
+[주요 이벤트]
+- ActionEvent	작동시키는 경우
+= ActionListener	ActionEvent를 처리하기 위해 만들어진 인터페이스
+
+- MouseEvent	마우스로 특정 행위를 하는 경우
+= MouseListener	MouseEvent를 처리하기 위해 만들어진 인터페이스
+
+- KeyEvent	키보드로 특정 행위를 하는 경우
+= KeyListener	KeyEvent를 처리하기 위해 만들어진 인터페이스
+
+- WindowEvent	창의 상태와 관련된 행위를 하는 경우
+= WindowListener	WindowEvent를 처리하기 위해 만들어진 인터페이스
