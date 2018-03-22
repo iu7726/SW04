@@ -49,6 +49,7 @@ class Window14 extends JFrame {
 		// 상단부분이 나오지 않도록 설정
 		 this.setUndecorated(true);
 		this.setResizable(false);
+		// 항상 최상위 노출
 		this.setAlwaysOnTop(true);
 		this.setVisible(true);
 	}
@@ -77,7 +78,6 @@ class Window14 extends JFrame {
 			try {
 				lb.setVisible(false);
 				Robot r = new Robot();
-				Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
 				Thread t = new Thread() {
 					public void run() {
 						while (true) {
