@@ -54,9 +54,9 @@ class Window04 extends JFrame{
 		
 		//우리가 알던 이벤트 외에 Swing에서는 "내장 단축키"를 변경할 수 있다.
 		//단축키 객체를 만들어야 한다. - keyStroke
-//		KeyStroke enter = KeyStroke.getKeyStroke(조합키, 입력키);
+//		KeyStroke enter = KeyStroke.getKeyStroke(입력키,조합키);
 		KeyStroke enter = KeyStroke.getKeyStroke(KeyEvent.VK_ENTER,0);
-		KeyStroke ctrlEnter = KeyStroke.getKeyStroke(KeyEvent.CTRL_DOWN_MASK,KeyEvent.VK_ENTER);
+		KeyStroke ctrlEnter = KeyStroke.getKeyStroke(KeyEvent.VK_ENTER,KeyEvent.CTRL_DOWN_MASK);
 		
 		Action enterAction = new AbstractAction() {
 			

@@ -52,8 +52,10 @@ class Window01 extends Frame {
 		mb.add(file);
 		mb.add(view);
 		file.add(nFile);
+		file.addSeparator();
 		file.add(open);
 		file.add(save);
+		file.addSeparator();
 		file.add(exit);
 		view.add(sizeup);
 		view.add(sizedown);
@@ -75,7 +77,7 @@ class Window01 extends Frame {
 
 		// 새파일
 		ActionListener newActListener = (e) -> {
-			ta.setText(null);
+			ta.setText(null);//null보다는 ""을 사용해야함
 		};
 		// 글씨 크기 증가
 		ActionListener fontUp = (e) -> {
